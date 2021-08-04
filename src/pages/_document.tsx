@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="pt-br">
-        <head />
+        <Head />
         <body>
           <Main />
           <NextScript />
