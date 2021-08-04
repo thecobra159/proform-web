@@ -10,8 +10,9 @@ interface IHeader {
 function headerStyles({ isScrolled }: IHeader) {
   if (isScrolled) {
     return css`
-      background-color: ${Theme.ProformBlack};
+      background-color: ${Theme.White};
       box-shadow: 0 3px 6px ${Theme.ProformGreen};
+      opacity: 0.8;
     `
   } else {
     return css`
@@ -23,11 +24,22 @@ function headerStyles({ isScrolled }: IHeader) {
 
 export const HeaderWrapper = styled.nav<IHeader>`
   ${headerStyles};
+  -moz-transition: position 10s;
+  -ms-transition: position 10s;
+  -o-transition: position 10s;
+  -webkit-transition: all 0.5s ease;
   display: flex;
   height: 122px;
   justify-content: center;
   position: fixed;
+  top: 0;
+  transition: all 0.5s ease;
   width: 100%;
+  z-index: 10;
+
+  ${media.tablet} {
+    height: 80px;
+  }
 `
 
 export const HeaderContent = styled.div`
@@ -40,6 +52,11 @@ export const HeaderContent = styled.div`
 export const HeaderLogo = styled(Image)`
   max-height: 122px;
   max-width: 122px;
+
+  ${media.tablet} {
+    max-height: 80px;
+    max-width: 80px;
+  }
 `
 
 export const HeaderMenu = styled.div`

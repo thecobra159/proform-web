@@ -89,6 +89,7 @@ export default createGlobalStyle`
     font: inherit;
     font-family: 'Nunito', sans-serif;
     vertical-align: baseline;
+    box-sizing: border-box;
   }
 
   /* HTML5 display-role reset for older browsers */
@@ -142,8 +143,15 @@ export default createGlobalStyle`
     border-spacing: 0;
   }
 
+  Link {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
   a {
     color: inherit;
+    font-size: 18px;
+    line-height: 24px;
     text-decoration: none;
     cursor: pointer;
   }
