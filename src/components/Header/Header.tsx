@@ -8,7 +8,7 @@ import {
   HeaderWrapper,
 } from '@/styles/components/Header/Header'
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
+import { Link } from 'react-scroll'
 
 export default function Header(): JSX.Element {
   const [isScrolled, setScrolled] = useState(false)
@@ -27,16 +27,34 @@ export default function Header(): JSX.Element {
       <HeaderContent>
         <HeaderLogo alt="Proform Logo" src={'assets/logo/logo.png'} />
         <HeaderMenu>
-          <Link href="#home" passHref>
+          <Link to="home" spy={true} smooth={true} offset={-100} duration={500}>
             <HeaderMenuItem data-goto="#home">Home</HeaderMenuItem>
           </Link>
-          <Link href="#about" passHref>
+          <Link
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={500}
+          >
             <HeaderMenuItem data-goto="#about">Sobre</HeaderMenuItem>
           </Link>
-          <Link href="#services" passHref>
+          <Link
+            to="services"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={500}
+          >
             <HeaderMenuItem data-goto="#services">Serviços</HeaderMenuItem>
           </Link>
-          <Link href="#contact" passHref>
+          <Link
+            to="about"
+            spy={true}
+            smooth={true}
+            offset={-100}
+            duration={500}
+          >
             <HeaderMenuItem data-goto="#contact">Contato</HeaderMenuItem>
           </Link>
         </HeaderMenu>

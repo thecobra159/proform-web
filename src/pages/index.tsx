@@ -1,6 +1,8 @@
 import Banner from '@/components/Banner/Banner'
 import SEO from '@/components/SEO/SEO'
 import AboutUs from '@/components/AboutUs/AboutUS'
+import ProformParallax from '@/components/Parallax/Parallax'
+import OurServices from '@/components/OurServices/OurServices'
 
 export default function Home(): JSX.Element {
   return (
@@ -8,8 +10,8 @@ export default function Home(): JSX.Element {
       <SEO title="Proform Engenharia" description="" />
       <Banner />
       <AboutUs />
-      {/*<ProformParallax />*/}
-      {/*<AboutUs />*/}
+      <ProformParallax />
+      <OurServices />
     </>
   )
 }

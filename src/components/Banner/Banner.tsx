@@ -8,7 +8,7 @@ import {
 
 export default function Banner(): JSX.Element {
   return (
-    <BannerWrapper>
+    <BannerWrapper id="home">
       <BannerImage alt="hero_banner" src="assets/banner_2.png" />
       <BannerContent>
         <BannerTitle>Mussum Ipsum, cacilds vidis litro abertis.</BannerTitle>
