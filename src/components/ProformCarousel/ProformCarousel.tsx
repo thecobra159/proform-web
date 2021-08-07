@@ -1,39 +1,46 @@
-import { ReactChild, ReactNode } from 'react'
-import Carousel from 'react-multi-carousel'
 import { CarouselWrapper } from '@/styles/components/ProformCarousel/ProformCarousel'
+import { Carousel } from 'react-responsive-carousel'
+import Profile from '@/components/Profile/Profile'
+
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 interface IProformCarousel {
-  children: ReactNode | ReactChild
+  profileSlides?: {
+    imgAlt: string
+    imgSrc: string
+    name: string
+    office: string
+    linkedin: string
+  }[]
 }
 
 export default function ProformCarousel({
-  children,
+  profileSlides,
 }: IProformCarousel): JSX.Element {
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 9999, min: 1024 },
-      items: 1,
-      partialVisibilityGutter: 40,
-    },
-    tablet: { breakpoint: { max: 1024, min: 576 }, items: 1 },
-    mobile: { breakpoint: { max: 576, min: 0 }, items: 1 },
-  }
-
   return (
     <CarouselWrapper>
       <Carousel
-        responsive={responsive}
-        swipeable
-        draggable
-        showDots
-        arrows
-        ssr
-        infinite
+        className="profile"
         autoPlay
-        autoPlaySpeed={3000}
-        keyBoardControl
+        infiniteLoop
+        centerMode
+        centerSlidePercentage={50}
+        showArrows={false}
+        showIndicators={false}
+        showStatus={false}
       >
-        {children}
+        {profileSlides.map(
+          ({ imgAlt, imgSrc, name, office, linkedin }, index) => (
+            <Profile
+              imgAlt={imgAlt}
+              imgSrc={imgSrc}
+              name={name}
+              office={office}
+              linkedin={linkedin}
+              key={`Profile_${index}`}
+            />
+          ),
+        )}
       </Carousel>
     </CarouselWrapper>
   )

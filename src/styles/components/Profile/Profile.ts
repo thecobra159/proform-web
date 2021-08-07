@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import Image from '@/components/Image/Image'
 import { Theme } from '@/styles/Theme'
+import { media } from '@/styles/GlobalStyles'
 
 export const ProfileWrapper = styled.div`
   align-items: center;
@@ -9,6 +10,12 @@ export const ProfileWrapper = styled.div`
   height: 250px;
   text-align: center;
   width: 125px;
+
+  ${media.smallTablet} {
+    margin-right: 100%;
+    padding: 0 25px;
+    width: 100%;
+  }
 `
 
 export const ProfileImageWrapper = styled.div`
@@ -55,6 +62,12 @@ export const ProfileLinkedin = styled.div`
   }
 
   &:hover {
+    svg {
+      fill: ${Theme.LinkedinBlue};
+    }
+  }
+
+  ${media.tablet} {
     svg {
       fill: ${Theme.LinkedinBlue};
     }

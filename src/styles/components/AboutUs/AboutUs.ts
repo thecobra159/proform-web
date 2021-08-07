@@ -71,8 +71,9 @@ export const AboutUsProfilesMobile = styled.div`
   display: none;
 
   ${media.tablet} {
-    display: block;
+    display: flex;
     justify-content: center;
     margin-top: 50px;
+    min-height: 300px;
   }
 `

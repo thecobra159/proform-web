@@ -43,7 +43,7 @@ export default function AboutUs(): JSX.Element {
   ]
 
   return (
-    <AboutUsWrapper>
+    <AboutUsWrapper id="about">
       <AboutUsTitle>SOBRE A PROFORM</AboutUsTitle>
       <AboutUsContent>
         <AboutUsContentBox>
@@ -70,20 +70,7 @@ export default function AboutUs(): JSX.Element {
         </AboutUsProfiles>
 
         <AboutUsProfilesMobile>
-          <ProformCarousel>
-            {profiles.map(
-              ({ imgAlt, imgSrc, name, office, linkedin }, index) => (
-                <Profile
-                  imgAlt={imgAlt}
-                  imgSrc={imgSrc}
-                  name={name}
-                  office={office}
-                  linkedin={linkedin}
-                  key={`profile_${index}`}
-                />
-              ),
-            )}
-          </ProformCarousel>
+          <ProformCarousel profileSlides={profiles} />
         </AboutUsProfilesMobile>
       </AboutUsContent>
     </AboutUsWrapper>
