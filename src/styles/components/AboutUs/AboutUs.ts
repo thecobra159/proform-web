@@ -19,7 +19,7 @@ export const AboutUsWrapper = styled.div`
   }
 `
 
-export const AboutUsTitle = styled.h1`
+export const AboutUsTitle = styled.h2`
   text-transform: uppercase;
 
   ${media.tablet} {
