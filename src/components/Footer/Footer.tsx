@@ -5,6 +5,7 @@ import {
   FooterItemLink,
   FooterItems,
   FooterItemTitle,
+  FooterLinks,
   FooterLogo,
   FooterNote,
   FooterWrapper,
@@ -78,8 +79,8 @@ export default function Footer(): JSX.Element {
             <FooterItems key={`items_${index}`}>
               <FooterItemTitle>{title}</FooterItemTitle>
               {itemsLink &&
-                itemsLink.map(({ text, link, email, phone }) => (
-                  <>
+                itemsLink.map(({ text, link, email, phone }, index) => (
+                  <FooterLinks key={`${text}_${index}`}>
                     {link && (
                       <FooterItemLink>
                         <Link
@@ -107,7 +108,7 @@ export default function Footer(): JSX.Element {
                         {text}
                       </FooterItemLink>
                     )}
-                  </>
+                  </FooterLinks>
                 ))}
               {itemsNoLink &&
                 itemsNoLink.map((item, index) => (

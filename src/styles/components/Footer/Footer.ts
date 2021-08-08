@@ -76,6 +76,32 @@ export const FooterItems = styled.div`
   }
 `
 
+export const FooterLinks = styled.div`
+  display: block;
+
+  &:first-child {
+    margin-top: 35px;
+  }
+
+  &:not(:first-child) {
+    margin-top: 18px;
+  }
+
+  ${media.mobile} {
+    align-items: center;
+    font-size: 14px;
+    line-height: 19px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:not(:first-child) {
+      margin-left: 0;
+    }
+  }
+`
+
 export const FooterItemTitle = styled.p`
   color: ${Theme.White};
   font-size: 24px;
