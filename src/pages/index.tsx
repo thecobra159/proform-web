@@ -3,6 +3,7 @@ import SEO from '@/components/SEO/SEO'
 import AboutUs from '@/components/AboutUs/AboutUS'
 import ProformParallax from '@/components/Parallax/Parallax'
 import OurServices from '@/components/OurServices/OurServices'
+import { Clients } from '@/components/Clients/Clients'
 
 export default function Home(): JSX.Element {
   return (
@@ -12,6 +13,7 @@ export default function Home(): JSX.Element {
       <AboutUs />
       <ProformParallax />
       <OurServices />
+      <Clients />
     </>
   )
 }
