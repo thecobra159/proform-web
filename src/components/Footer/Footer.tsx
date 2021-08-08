@@ -78,8 +78,8 @@ export default function Footer(): JSX.Element {
             <FooterItems key={`items_${index}`}>
               <FooterItemTitle>{title}</FooterItemTitle>
               {itemsLink &&
-                itemsLink.map(({ text, link, email, phone }, index) => (
-                  <div key={`item_${index}`}>
+                itemsLink.map(({ text, link, email, phone }) => (
+                  <>
                     {link && (
                       <FooterItemLink>
                         <Link
@@ -107,7 +107,7 @@ export default function Footer(): JSX.Element {
                         {text}
                       </FooterItemLink>
                     )}
-                  </div>
+                  </>
                 ))}
               {itemsNoLink &&
                 itemsNoLink.map((item, index) => (
