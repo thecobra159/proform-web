@@ -1,14 +1,26 @@
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import { Theme } from '@/styles/Theme'
 import Image from '@/components/Image/Image'
 import { media } from '@/styles/GlobalStyles'
 
 interface IHeader {
   isScrolled?: boolean
+  isMobileMenuOpen?: boolean
 }
 
-function headerStyles({ isScrolled }: IHeader) {
-  if (isScrolled) {
+const showMobileMenuOpen = keyframes`
+  from {
+    top: 0;
+    opacity: 0;
+  }
+  to {
+    top: 80px;
+    opacity: 1;
+  }
+`
+
+function headerStyles({ isScrolled, isMobileMenuOpen }: IHeader) {
+  if (isScrolled || isMobileMenuOpen) {
     return css`
       background-color: ${Theme.White};
       box-shadow: 0 3px 6px ${Theme.ProformGreen};
@@ -39,6 +51,12 @@ export const HeaderWrapper = styled.nav<IHeader>`
 
   ${media.tablet} {
     height: 80px;
+  }
+
+  ${media.mobile} {
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
   }
 `
 
@@ -75,41 +93,33 @@ export const HeaderMenuItem = styled.a`
   &.active {
     color: ${Theme.ProformGreen};
   }
+
+  ${media.mobile} {
+    color: ${Theme.Black};
+    margin-top: 15px;
+  }
 `
 
 export const HeaderMenuMobile = styled.div`
   display: none;
+  transition: ease-in-out 0.5s;
 
   ${media.mobile} {
-    display: flex;
-    flex-direction: column;
+    display: block;
   }
 `
 
-export const HeaderMenuBar = styled.div`
-  background-color: #333;
-  height: 5px;
-  margin: 6px 0;
-  transition: 0.4s;
-  width: 35px;
+export const HeaderMenuMobileContent = styled.div<IHeader>`
+  align-items: center;
+  background-color: ${Theme.White};
+  display: none;
+  flex-direction: column;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
 
-  &:first-child {
-    .change {
-      -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-      transform: rotate(-45deg) translate(-9px, 6px);
-    }
-  }
-
-  &:nth-child(1) {
-    .change {
-      opacity: 0;
-    }
-  }
-
-  &:last-child {
-    .change {
-      -webkit-transform: rotate(45deg) translate(-8px, -8px);
-      transform: rotate(45deg) translate(-8px, -8px);
-    }
+  ${media.mobile} {
+    animation: ${showMobileMenuOpen} 0.5s linear forwards;
+    display: flex;
   }
 `
