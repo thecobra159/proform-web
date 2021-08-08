@@ -22,6 +22,7 @@ export const ParallaxContent = styled.div`
 `
 
 export const ParallaxIcon = styled.div`
+  color: ${Theme.ProformGreen};
   font-size: 32px;
   height: max-content;
   margin: 0 15px;

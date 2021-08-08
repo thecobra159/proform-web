@@ -11,7 +11,7 @@ export const ProfileWrapper = styled.div`
   text-align: center;
   width: 125px;
 
-  ${media.smallTablet} {
+  ${media.mobile} {
     margin-right: 100%;
     padding: 0 25px;
     width: 100%;
