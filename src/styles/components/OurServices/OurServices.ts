@@ -6,7 +6,7 @@ export const OurServicesWrapper = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   padding: 64px 0;
   width: 100%;
 
@@ -40,9 +40,16 @@ export const OurServicesText = styled.p`
 `
 
 export const OurServicesCardsContainer = styled.div`
-  border: 1px solid red;
+  -webkit-flex-wrap: wrap;
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
   margin-top: 56px;
   width: 80%;
+
+  ${media.smallTablet} {
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `
