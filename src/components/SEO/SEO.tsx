@@ -8,6 +8,7 @@ interface ISeo {
 
 export default function SEO({ title, description }: ISeo): JSX.Element {
   const pageImage = 'assets/logo/logo.png'
+
   return (
     <Head>
       <title>{title}</title>
