@@ -11,7 +11,7 @@ interface IClient {
   imgAlt: string
 }
 
-export function Clients(): JSX.Element {
+export default function Clients(): JSX.Element {
   const clients: IClient[] = [
     {
       text: 'Pride',
