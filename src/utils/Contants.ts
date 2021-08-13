@@ -16,3 +16,13 @@ export const RedirectLinks = {
     'Olá, gostaria de mais informações sobre seus serviços!',
   )}`,
 }
+
+export const Messages = {
+  formSent: 'Contato enviado com sucesso!',
+  formNotSent: 'Contato não enviado, tente novamente mais tarde!',
+  requiredField: 'Preencha este campo, por favor!',
+  wrongName: 'Preencha o nome corrretamente!',
+  wrongEmail: 'Preencha o email corretamente!',
+  wrongPhone: 'Preencha o telefone corretamente!',
+  wrongMessage: 'Deixe sua mensagem',
+}
