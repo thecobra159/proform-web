@@ -82,6 +82,7 @@ export default createGlobalStyle`
   time,
   mark,
   audio,
+  input,
   video {
     margin: 0;
     padding: 0;
