@@ -140,7 +140,7 @@ export const ContactUsBoxSocialMediaImage = styled(Image)`
   }
 `
 
-export const ContactUsFormWrapper = styled.form`
+export const ContactUsFormWrapper = styled.div`
   border: 1px solid red;
   width: 55%;
 
@@ -152,4 +152,13 @@ export const ContactUsFormWrapper = styled.form`
   ${media.mobile} {
     width: 100%;
   }
+`
+
+export const ContactUsForm = styled.form`
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: space-around;
+  width: 100%;
 `
