@@ -14,17 +14,17 @@ export default function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <ParallaxProvider>
         <Header />
         <Component {...pageProps} />
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        {/*<ToastContainer*/}
+        {/*  position="bottom-right"*/}
+        {/*  autoClose={5000}*/}
+        {/*  hideProgressBar={false}*/}
+        {/*  newestOnTop={false}*/}
+        {/*  closeOnClick*/}
+        {/*  rtl={false}*/}
+        {/*  pauseOnFocusLoss*/}
+        {/*  draggable*/}
+        {/*  pauseOnHover*/}
+        {/*/>*/}
       </ParallaxProvider>
       <Footer />
     </>

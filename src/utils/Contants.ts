@@ -19,7 +19,8 @@ export const RedirectLinks = {
 
 export const Messages = {
   formSent: 'Contato enviado com sucesso!',
-  formNotSent: 'Contato não enviado, tente novamente mais tarde!',
+  formNotSent:
+    'Contato não enviado, revise os dados e tente novamente mais tarde!',
   requiredField: 'Preencha este campo, por favor!',
   wrongName: 'Preencha o nome corrretamente!',
   wrongEmail: 'Preencha o email corretamente!',

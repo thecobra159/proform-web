@@ -1,3 +1,6 @@
+import { Formik } from 'formik'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 import {
   ContactUsBox,
   ContactUsBoxItem,
@@ -9,20 +12,26 @@ import {
   ContactUsBoxTitle,
   ContactUsContent,
   ContactUsForm,
+  ContactUsFormButton,
   ContactUsFormWrapper,
   ContactUsTitle,
   ContactUsWrapper,
 } from '@/styles/components/ContactUs/ContactUs'
 import { Constants, Messages, RedirectLinks } from '@/utils/Contants'
-import { Formik } from 'formik'
-import { useState } from 'react'
 import {
   Input,
   InputMessage,
   InputWrapper,
 } from '@/styles/components/Input/Input'
-import { contactSchema } from '@/utils/Functions'
-import { toast } from 'react-toastify'
+import { Button } from '@/styles/components/Button/Button'
+import {
+  contactSchema,
+  emptyStringRegex,
+  numberRegex,
+  sendEmail,
+} from '@/utils/Functions'
+
+import ArrowRight from '../../../public/assets/right-arrow.svg'
 
 interface IContactUs {
   title: string
@@ -35,7 +44,7 @@ interface IContactUs {
   }[]
 }
 
-interface IContactRequest {
+export interface IContactRequest {
   name: string
   email: string
   phone: string
@@ -44,11 +53,6 @@ interface IContactRequest {
 }
 
 export default function ContactUs(): JSX.Element {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [phone, setPhone] = useState('')
-  const [service, setService] = useState('')
-  const [message, setMessage] = useState('')
   const boxItems: IContactUs[] = [
     {
       title: 'phone:',
@@ -99,9 +103,23 @@ export default function ContactUs(): JSX.Element {
       value: 'Gerenciamento de obras',
     },
   ]
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [service, setService] = useState(services[0].value)
+  const [message, setMessage] = useState('')
 
-  async function handleSubmit(formData: IContactRequest): Promise<void> {
-    const isValid = await contactSchema.isValid(formData)
+  async function handleSubmit(): Promise<void> {
+    const data: IContactRequest = {
+      name,
+      email,
+      phone,
+      service,
+      message,
+    }
+    const isValid = await contactSchema.isValid(data)
+    console.log('is valid -> ', isValid)
+    await sendEmail(data)
 
     if (isValid) {
       toast(Messages.formSent, { type: 'success' })
@@ -170,36 +188,59 @@ export default function ContactUs(): JSX.Element {
               message: message,
             }}
             validationSchema={contactSchema}
-            onSubmit={fields => {
-              handleSubmit({
-                name: fields.name,
-                email: fields.email,
-                phone: fields.phone,
-                service: fields.service,
-                message: fields.message,
-              })
-            }}
+            onSubmit={handleSubmit}
           >
             <ContactUsForm>
               <InputWrapper>
                 <InputMessage name="name" component="div" />
-                <Input placeholder="nome completo" name="name" type="text" />
+                <Input
+                  required
+                  placeholder="nome completo"
+                  name="name"
+                  type="text"
+                  onChange={({ target: { value } }) => setName(value)}
+                  value={name}
+                />
               </InputWrapper>
               <InputWrapper>
                 <InputMessage name="email" component="div" />
-                <Input placeholder="e-mail" name="email" type="text" />
+                <Input
+                  required
+                  placeholder="e-mail"
+                  name="email"
+                  type="email"
+                  onChange={({ target: { value } }) => setEmail(value)}
+                  value={email}
+                />
               </InputWrapper>
               <InputWrapper>
                 <InputMessage name="phone" component="div" />
                 <Input
-                  placeholder="telefone: (xx) 9xxxx-xxxx"
+                  required
+                  placeholder="telefone"
                   name="phone"
                   inputMode="numeric"
-                  maxLenght={11}
+                  type="tel"
+                  maxLength="11"
+                  value={phone}
+                  onChange={({ target: { value } }) => {
+                    if (
+                      numberRegex.test(value) ||
+                      emptyStringRegex.test(value)
+                    ) {
+                      setPhone(value)
+                    }
+                  }}
                 />
               </InputWrapper>
               <InputWrapper>
-                <Input placeholder="serviço desejado" name="name" as="select">
+                <Input
+                  required
+                  placeholder="serviço desejado"
+                  name="name"
+                  as="select"
+                  onChange={({ target: { value } }) => setService(value)}
+                >
                   {services.map(({ label, value }, index) => (
                     <option value={value} key={`service_${index}`}>
                       {label}
@@ -207,16 +248,24 @@ export default function ContactUs(): JSX.Element {
                   ))}
                 </Input>
               </InputWrapper>
-              <InputWrapper width="95%" height="300px">
-                <InputMessage name="message" />
+              <InputWrapper width="95%">
+                <InputMessage name="message" component="div" />
                 <Input
+                  required
                   placeholder="mensagem"
                   type="text"
                   name="message"
-                  hasError
+                  as="textarea"
+                  height="300px"
+                  value={message}
+                  onChange={({ target: { value } }) => setMessage(value)}
                 />
               </InputWrapper>
-              <button type="submit">ok</button>
+              <ContactUsFormButton>
+                <Button type="button" onClick={handleSubmit}>
+                  enviar <ArrowRight />
+                </Button>
+              </ContactUsFormButton>
             </ContactUsForm>
           </Formik>
         </ContactUsFormWrapper>

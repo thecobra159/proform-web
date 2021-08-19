@@ -141,7 +141,6 @@ export const ContactUsBoxSocialMediaImage = styled(Image)`
 `
 
 export const ContactUsFormWrapper = styled.div`
-  border: 1px solid red;
   width: 55%;
 
   ${media.tablet} {
@@ -161,4 +160,14 @@ export const ContactUsForm = styled.form`
   height: 100%;
   justify-content: space-around;
   width: 100%;
+`
+
+export const ContactUsFormButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 95%;
+
+  ${media.mobile} {
+    width: 100%;
+  }
 `
